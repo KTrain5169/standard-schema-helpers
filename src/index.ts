@@ -7,7 +7,9 @@ import type { StandardSchemaV1 } from "@standard-schema/spec";
  * @param schemas An array of {@link StandardSchemaV1 Standard Schemas}
  * @returns A {@link StandardSchemaV1 Standard Schema-compliant} wrapper.
  */
-export function oneOf<const S extends StandardSchemaV1[]>(schemas: S): S[number] {
+export function oneOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(
+  schemas: S,
+): S[number] {
   const validateFunc = async (value: unknown) => {
     const errors = [];
     for (const s of schemas) {
