@@ -1,16 +1,20 @@
 {
-  "name": "standard-schema-helpers",
+  "name": "@ktrain5369/standard-schema-helpers",
   "version": "0.0.0",
   "description": "A starter for creating a TypeScript package.",
-  "homepage": "https://github.com/author/library#readme",
+  "homepage": "https://github.com/KTrain5169/standard-schema-helpers#readme",
   "bugs": {
-    "url": "https://github.com/author/library/issues"
+    "url": "https://github.com/KTrain5169/standard-schema-helpers/issues"
   },
   "license": "MIT",
-  "author": "Author Name <author.name@mail.com>",
+  "author": {
+    "name": "KTrain5369",
+    "email": "me@ktrain5369.dev",
+    "url": "https://ktrain5369.dev/"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/author/library.git"
+    "url": "git+https://github.com/KTrain5169/standard-schema-helpers.git"
   },
   "files": [
     "dist"

@@ -3,8 +3,8 @@
     "target": "esnext",
     "lib": ["es2023"],
     "moduleDetection": "force",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "types": ["node"],
     "strict": true,
@@ -14,7 +14,9 @@
     "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "isolatedModules": true,
+    "isolatedDeclarations": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["*.config.ts", "tests"]
 }

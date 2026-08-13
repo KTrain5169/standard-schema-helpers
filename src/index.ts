@@ -41,4 +41,4 @@ export function oneOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(
  * Otherwise, the first schema's issue will be compiled and return as an issue array.
  */
 /* @__PURE__ */
-export function allOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(schema: S) {}
+export function allOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(schema: S): void {}
