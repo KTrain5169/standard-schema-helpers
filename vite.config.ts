@@ -23,10 +23,18 @@ export default defineConfig({
     exports: true,
   },
   lint: {
+    plugins: ["eslint", "import", "vitest", "oxc", "typescript", "promise", "jsdoc"],
+    rules: {
+      "vitest/no-disabled-tests": "allow",
+    },
     options: {
       typeAware: true,
       typeCheck: true,
     },
   },
-  fmt: {},
+  fmt: {
+    semi: true,
+    singleQuote: false,
+    jsxSingleQuote: false,
+  },
 });
