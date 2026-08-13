@@ -10,7 +10,7 @@ import type { StandardSchemaV1 } from "@standard-schema/spec";
 export function oneOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(
   schemas: S,
 ): S[number] {
-  const validateFunc = async (value: unknown) => {
+  const validate = async (value: unknown) => {
     const errors = [];
     for (const s of schemas) {
       const result = await s["~standard"].validate(value);
@@ -29,7 +29,7 @@ export function oneOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(
     "~standard": {
       vendor: "standard-schema-helpers",
       version: 1,
-      validate: validateFunc,
+      validate,
     },
   };
 }
