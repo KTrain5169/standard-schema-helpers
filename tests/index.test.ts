@@ -1,10 +1,10 @@
-import { expect, test } from "vite-plus/test";
+import { expect, test, suite } from "vite-plus/test";
 import * as zSchemas from "./fixtures/zod.ts";
 import * as vSchemas from "./fixtures/valibot.ts";
 
 import { oneOf } from "../src/index.ts";
 
-test("oneOf", () => {
+suite("oneOf", () => {
   const idSchema = oneOf([zSchemas.idSchema, vSchemas.idSchema]);
 
   test("use Zod schema", async () => {
