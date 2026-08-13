@@ -7,10 +7,8 @@ import type { StandardSchemaV1 } from "@standard-schema/spec";
  * @param schemas An array of {@link StandardSchemaV1 Standard Schemas}
  * @returns A {@link StandardSchemaV1 Standard Schema-compliant} wrapper.
  */
-export function oneOf<const TInput, const TOutput>(
-  schemas: StandardSchemaV1<TInput, TOutput>[],
-): StandardSchemaV1<TInput, TOutput> {
-  const validateFunc = async (value: unknown): Promise<StandardSchemaV1.Result<TOutput>> => {
+export function oneOf<const S extends StandardSchemaV1[]>(schemas: S): S[number] {
+  const validateFunc = async (value: unknown) => {
     const errors = [];
     for (const s of schemas) {
       const result = await s["~standard"].validate(value);
@@ -33,3 +31,7 @@ export function oneOf<const TInput, const TOutput>(
     },
   };
 }
+
+/**
+ * allOf
+ */
