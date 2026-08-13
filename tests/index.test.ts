@@ -32,3 +32,5 @@ suite("oneOf", () => {
     expect(testResult).toStrictEqual(baseResult);
   });
 });
+
+suite.skip("allOf", () => {});
