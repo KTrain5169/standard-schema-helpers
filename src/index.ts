@@ -35,10 +35,54 @@ export function oneOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(
   };
 }
 
+type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) extends (
+  x: infer I,
+) => void
+  ? I
+  : never;
+
+type AllOfInput<S extends readonly StandardSchemaV1[]> = UnionToIntersection<
+  StandardSchemaV1.InferInput<S[number]>
+>;
+
+type AllOfOutput<S extends readonly StandardSchemaV1[]> = UnionToIntersection<
+  StandardSchemaV1.InferOutput<S[number]>
+>;
+
 /**
  * Creates a wrapper schema that checks the array of schemas.
  * If the input values matches **all** of the schemas in the array, then it will return with the typed data.
  * Otherwise, the first schema's issue will be compiled and return as an issue array.
  */
 /* @__PURE__ */
-export function allOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(schema: S): void {}
+export function allOf<const S extends readonly Pick<StandardSchemaV1, "~standard">[]>(
+  schemas: S,
+): StandardSchemaV1<AllOfInput<S>, AllOfOutput<S>> {
+  const validate = async (value: unknown) => {
+    const results: unknown[] = [];
+
+    for (const schema of schemas) {
+      const result = await schema["~standard"].validate(value);
+
+      if (result.issues) {
+        return result;
+      }
+
+      results.push(result.value);
+    }
+
+    const returnObject = Object.assign({}, ...results);
+
+    return {
+      value: returnObject,
+    };
+  };
+
+  return {
+    "~standard": {
+      vendor: "standard-schema-helpers",
+      version: 1,
+      validate,
+    },
+  };
+}
