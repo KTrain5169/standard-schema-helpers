@@ -7,7 +7,7 @@ import type { StandardSchemaV1 } from "@standard-schema/spec";
  * @param schemas An array of {@link StandardSchemaV1 Standard Schemas}
  * @returns A {@link StandardSchemaV1 Standard Schema-compliant} wrapper.
  */
-/* @__PURE__ */
+/* @__NO_SIDE_EFFECTS__ */
 export function oneOf<const S extends Pick<StandardSchemaV1, "~standard">[]>(
   schemas: S,
 ): S[number] {
@@ -54,7 +54,7 @@ type AllOfOutput<S extends readonly StandardSchemaV1[]> = UnionToIntersection<
  * If the input values matches **all** of the schemas in the array, then it will return with the typed data.
  * Otherwise, the first schema's issue will be compiled and return as an issue array.
  */
-/* @__PURE__ */
+/* @__NO_SIDE_EFFECTS__ */
 export function allOf<const S extends readonly Pick<StandardSchemaV1, "~standard">[]>(
   schemas: S,
 ): StandardSchemaV1<AllOfInput<S>, AllOfOutput<S>> {
