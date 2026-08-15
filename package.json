@@ -1,7 +1,7 @@
 {
   "name": "@ktrain5369/standard-schema-helpers",
   "version": "0.0.0",
-  "description": "A starter for creating a TypeScript package.",
+  "description": "A small set of utilities for working with Standard Schema validators.",
   "homepage": "https://github.com/KTrain5169/standard-schema-helpers#readme",
   "bugs": {
     "url": "https://github.com/KTrain5169/standard-schema-helpers/issues"
