@@ -17,6 +17,7 @@ export default defineConfig({
     "*": "vp check --fix",
   },
   pack: {
+    entry: ["src/index.ts", "src/json.ts"],
     dts: {
       tsgo: true,
     },
@@ -36,5 +37,6 @@ export default defineConfig({
     semi: true,
     singleQuote: false,
     jsxSingleQuote: false,
+    trailingComma: "all",
   },
 });

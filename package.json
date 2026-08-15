@@ -22,6 +22,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
+    "./json": "./dist/json.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -39,6 +40,7 @@
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.0",
     "@types/node": "^26.1.1",
+    "@valibot/to-json-schema": "^1.7.1",
     "arktype": "^2.2.3",
     "bumpp": "^11.1.0",
     "typescript": "^7.0.2",
