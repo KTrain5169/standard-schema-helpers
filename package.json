@@ -36,6 +36,7 @@
     "deepmerge-ts": "^7.1.6"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.0",
     "@types/node": "^26.1.1",
     "arktype": "^2.2.3",
