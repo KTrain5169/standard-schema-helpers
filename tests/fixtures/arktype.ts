@@ -6,5 +6,7 @@ export const idSchema = type({
 });
 
 export const contributiveSchema = type({
-  "notes?": "string",
+  meta: type({
+    "notes?": "string",
+  }),
 });

@@ -1,4 +1,5 @@
 import type { StandardSchemaV1 } from "@standard-schema/spec";
+import { deepmerge } from "deepmerge-ts";
 
 /**
  * Create a wrapper schema that checks the array of schemas.
@@ -71,7 +72,7 @@ export function allOf<const S extends readonly Pick<StandardSchemaV1, "~standard
       results.push(result.value);
     }
 
-    const returnObject = Object.assign({}, ...results);
+    const returnObject = deepmerge({}, ...results) as AllOfOutput<S>;
 
     return {
       value: returnObject,
@@ -123,7 +124,7 @@ export function anyOf<const S extends readonly Pick<StandardSchemaV1, "~standard
     }
 
     if (results.length !== 0) {
-      const finalResult = Object.assign({}, ...results);
+      const finalResult = deepmerge({}, ...results) as AnyOfOutput<S>;
       return {
         value: finalResult,
       };

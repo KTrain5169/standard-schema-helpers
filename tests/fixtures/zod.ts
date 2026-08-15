@@ -7,4 +7,7 @@ export const idSchema = z.object({
 
 export const contributiveSchema = z.object({
   name: z.string(),
+  meta: z.object({
+    noop: z.boolean(),
+  }),
 });

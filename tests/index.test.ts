@@ -45,7 +45,10 @@ suite("allOf", () => {
     const data: StandardSchemaV1.InferInput<typeof contributiveSchema> = {
       name: "test",
       count: 10,
-      notes: "More!",
+      meta: {
+        noop: true,
+        notes: "More!",
+      },
     };
     const testResult = await contributiveSchema["~standard"].validate(data);
     expect.assert(!testResult.issues);
@@ -67,7 +70,11 @@ suite("allOf", () => {
   });
 
   test("Work properly even if omitted field from the arktype schema", async () => {
-    const data: StandardSchemaV1.InferInput<typeof contributiveSchema> = { name: "test", count: 5 };
+    const data: StandardSchemaV1.InferInput<typeof contributiveSchema> = {
+      name: "test",
+      count: 5,
+      meta: { noop: true },
+    };
     const testResult = await contributiveSchema["~standard"].validate(data);
     expect.assert(!testResult.issues);
 
@@ -87,9 +94,13 @@ suite("allOf", () => {
   test("Fail if one of the schemas don't match", async () => {
     const data: Omit<StandardSchemaV1.InferInput<typeof contributiveSchema>, "count"> = {
       name: "test",
-      notes: "Less!",
+      meta: {
+        noop: false,
+        notes: "Less!",
+      },
     };
     const testResult = await contributiveSchema["~standard"].validate(data);
     expect.assert(testResult.issues);
+    expect(testResult.issues.length).toEqual(1);
   });
 });
