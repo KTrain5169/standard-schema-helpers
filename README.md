@@ -28,3 +28,5 @@ This acts as a mix between `allOf` and `oneOf`.
 ## Notes
 
 - Deep merging uses the [`deepmerge-ts`](https://npmx.dev/package/deepmerge-ts) library.
+- Wrapper schemas created by the library are themselves Standard Schemas/Standard JSON Schemas. This makes it possible to pass itself to another library that asks for a Standard Schema.
+  - Type information should also be appropriately merged or combined, such that you can extract type information using `StandardTypedV1.InferInput`. However, Vitest type tests have not yet been set up, so this isn't a guarantee at the moment. However, I will try my best!
