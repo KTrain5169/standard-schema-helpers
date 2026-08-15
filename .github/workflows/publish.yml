@@ -19,6 +19,10 @@ jobs:
     permissions:
       contents: read
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
       - uses: ./.github/workflows/ci-setup.yml
 
       - uses: changesets/action/select-mode@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
@@ -35,6 +39,10 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
       - uses: ./.github/workflows/ci-setup.yml
 
       - uses: changesets/action/version@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
@@ -50,6 +58,10 @@ jobs:
     permissions:
       contents: read
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
       - uses: ./.github/workflows/ci-setup.yml
 
       - uses: changesets/action/pack@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
@@ -68,6 +80,10 @@ jobs:
       name: npm
       url: https://npmx.dev/package/@ktrain5369/standard-schema-helper
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
       - uses: ./.github/workflows/ci-setup.yml
         with:
           registry-url: https://registry.npmjs.org/
