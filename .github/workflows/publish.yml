@@ -23,7 +23,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./.github/workflows/ci-setup.yml
+      - uses: ./.github/actions/ci-setup
 
       - uses: changesets/action/select-mode@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
         id: select-mode
@@ -43,7 +43,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./.github/workflows/ci-setup.yml
+      - uses: ./.github/actions/ci-setup
 
       - uses: changesets/action/version@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
         id: version
@@ -62,7 +62,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./.github/workflows/ci-setup.yml
+      - uses: ./.github/actions/ci-setup
 
       - uses: changesets/action/pack@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
         id: pack
@@ -84,7 +84,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./.github/workflows/ci-setup.yml
+      - uses: ./.github/actions/ci-setup
         with:
           registry-url: https://registry.npmjs.org/
 
