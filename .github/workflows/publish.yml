@@ -19,7 +19,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: ./,github/workflows/ci-setup.yml
+      - uses: ./.github/workflows/ci-setup.yml
 
       - uses: changesets/action/select-mode@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
         id: select-mode
@@ -35,7 +35,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: ./,github/workflows/ci-setup.yml
+      - uses: ./.github/workflows/ci-setup.yml
 
       - uses: changesets/action/version@198f833dd7d863100ea6e28967bc9a9fdefadb0a # v2.1.0
         id: version
