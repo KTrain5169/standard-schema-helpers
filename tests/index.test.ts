@@ -3,7 +3,7 @@ import * as zSchemas from "./fixtures/zod.ts";
 import * as vSchemas from "./fixtures/valibot.ts";
 import * as aSchemas from "./fixtures/arktype.ts";
 
-import { allOf, oneOf } from "../src/index.ts";
+import { allOf, oneOf } from "../src/standard.ts";
 import { StandardSchemaV1 } from "@standard-schema/spec";
 
 suite("oneOf", () => {
