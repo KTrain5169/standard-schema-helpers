@@ -14,3 +14,5 @@ runs:
         registry-url: ${{ inputs.registry-url }}
         sfw: true
         run-install: true
+
+    - uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
