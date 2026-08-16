@@ -18,7 +18,7 @@ export function oneOf<const S extends readonly Pick<StandardSchemaCombinedV1, "~
 ): S[number] {
   return {
     "~standard": {
-      vendor: "standard-schema-helper",
+      vendor: "standard-schema-helpers",
       version: 1,
       validate: oneOfValidatorFactory(schemas),
       jsonSchema: assignJsonSchemaSpec(schemas, "oneOf"),
