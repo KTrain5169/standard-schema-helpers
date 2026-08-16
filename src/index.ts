@@ -1,7 +1,7 @@
 import type { StandardSchemaV1 } from "@standard-schema/spec";
-import { deepmerge } from "deepmerge-ts";
 
 import type { AllOfInput, AllOfOutput, AnyOfInput, AnyOfOutput } from "./types";
+import { allOfValidatorFactory, anyOfValidatorFunction, oneOfValidatorFactory } from "./core";
 
 /**
  * Create a wrapper schema that checks the array of schemas.
@@ -14,26 +14,11 @@ import type { AllOfInput, AllOfOutput, AnyOfInput, AnyOfOutput } from "./types";
 export function oneOf<const S extends readonly Pick<StandardSchemaV1, "~standard">[]>(
   schemas: S,
 ): S[number] {
-  const validate = async (value: unknown) => {
-    const errors = [];
-    for (const s of schemas) {
-      const result = await s["~standard"].validate(value);
-      if (!result.issues) {
-        return result;
-      } else {
-        errors.push(...result.issues);
-      }
-    }
-    return {
-      issues: errors,
-    };
-  };
-
   return {
     "~standard": {
       vendor: "standard-schema-helpers",
       version: 1,
-      validate,
+      validate: oneOfValidatorFactory(schemas),
     },
   };
 }
@@ -49,31 +34,11 @@ export function oneOf<const S extends readonly Pick<StandardSchemaV1, "~standard
 export function allOf<const S extends readonly Pick<StandardSchemaV1, "~standard">[]>(
   schemas: S,
 ): StandardSchemaV1<AllOfInput<S>, AllOfOutput<S>> {
-  const validate = async (value: unknown) => {
-    const results: unknown[] = [];
-
-    for (const s of schemas) {
-      const result = await s["~standard"].validate(value);
-
-      if (result.issues) {
-        return result;
-      }
-
-      results.push(result.value);
-    }
-
-    const returnObject = deepmerge({}, ...results) as AllOfOutput<S>;
-
-    return {
-      value: returnObject,
-    };
-  };
-
   return {
     "~standard": {
       vendor: "standard-schema-helpers",
       version: 1,
-      validate,
+      validate: allOfValidatorFactory(schemas),
     },
   };
 }
@@ -90,44 +55,11 @@ export function allOf<const S extends readonly Pick<StandardSchemaV1, "~standard
 export function anyOf<const S extends readonly Pick<StandardSchemaV1, "~standard">[]>(
   schemas: S,
 ): StandardSchemaV1<AnyOfInput<S>, AnyOfOutput<S>> {
-  const validate = async (value: unknown) => {
-    const results: unknown[] = [];
-    const errors: StandardSchemaV1.Issue[] = [];
-
-    for (const s of schemas) {
-      const result = await s["~standard"].validate(value);
-      if (result.issues) {
-        errors.push(...result.issues);
-      } else {
-        results.push(result.value);
-      }
-    }
-
-    if (results.length !== 0) {
-      const finalResult = deepmerge({}, ...results) as AnyOfOutput<S>;
-      return {
-        value: finalResult,
-      };
-    } else if (errors.length !== 0) {
-      return {
-        issues: errors,
-      };
-    } else {
-      return {
-        issues: [
-          {
-            message: "No schema matched, but no issues were returned by any validator.",
-          },
-        ],
-      };
-    }
-  };
-
   return {
     "~standard": {
       vendor: "standard-schema-helpers",
       version: 1,
-      validate,
+      validate: anyOfValidatorFunction(schemas),
     },
   };
 }

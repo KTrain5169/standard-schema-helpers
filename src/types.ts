@@ -1,4 +1,14 @@
-import type { StandardTypedV1 } from "@standard-schema/spec";
+import type {
+  StandardJSONSchemaV1,
+  StandardSchemaV1,
+  StandardTypedV1,
+} from "@standard-schema/spec";
+
+export type StandardSchemaCombinedV1<Input = unknown, Output = Input> = StandardSchemaV1<
+  Input,
+  Output
+> &
+  StandardJSONSchemaV1<Input, Output>;
 
 type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) extends (
   x: infer I,
