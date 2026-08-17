@@ -2,7 +2,7 @@
 
 This package contains helper utilities for the Standard Schema spec.
 
-> [!WARN]
+> [!WARNING]
 > This library hasn't been tested yet, you're welcome to use it, but please keep in mind that this package was initially made within the span of a day, so there may be uncaught cases.
 
 ## API
@@ -24,7 +24,7 @@ Returns a wrapper schema that checks if the input value matches **one or more** 
 If more than one matches, it will be deep merged, similar to `allOf`.
 This acts as a mix between `allOf` and `oneOf`.
 
-> [!WARN]
+> [!WARNING]
 > Consider this the most "experimental" of this entire library. Unit tests have not been set up for it at all yet (other generators have their Standard Schema variant unit tested).
 
 ## Notes
