@@ -7,6 +7,8 @@ This package contains helper utilities for the Standard Schema spec.
 
 ## API
 
+There are variants for both Standard Schema and Standard JSON Schema exposed at `/standard` and `/json` respectively. The main entrypoint exports combined versions.
+
 ### `oneOf`
 
 Returns a wrapper schema that checks if the input value matches **one** of the provided schemas.
@@ -23,10 +25,10 @@ If more than one matches, it will be deep merged, similar to `allOf`.
 This acts as a mix between `allOf` and `oneOf`.
 
 > [!WARN]
-> Consider this the most "experimental" of this entire library. Unit tests have not been set up for it yet.
+> Consider this the most "experimental" of this entire library. Unit tests have not been set up for it at all yet (other generators have their Standard Schema variant unit tested).
 
 ## Notes
 
 - Deep merging uses the [`deepmerge-ts`](https://npmx.dev/package/deepmerge-ts) library.
 - Wrapper schemas created by the library are themselves Standard Schemas/Standard JSON Schemas. This makes it possible to pass itself to another library that asks for a Standard Schema.
-  - Type information should also be appropriately merged or combined, such that you can extract type information using `StandardTypedV1.InferInput`. However, Vitest type tests have not yet been set up, so this isn't a guarantee at the moment. However, I will try my best!
+  - Type information should also be appropriately merged or combined, such that you can extract type information using `InferInput`/`InferOutput`. That being said, Vitest type tests have not yet been set up for them, so this isn't a guarantee at the moment. However, I will try my best!
