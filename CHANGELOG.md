@@ -1,5 +1,15 @@
 # @ktrain5369/standard-schema-helpers
 
+## 0.2.0
+
+### Minor Changes
+
+- [`a2319fa`](https://github.com/KTrain5169/standard-schema-helpers/commit/a2319fac879cb1c8e50c6899eb037f6cee539a26) Thanks [@KTrain5169](https://github.com/KTrain5169)! - add a "combined" mode
+
+### Patch Changes
+
+- [`7a8f064`](https://github.com/KTrain5169/standard-schema-helpers/commit/7a8f06420422d5707dcd6ff721f4ba01cdc4f925) Thanks [@KTrain5169](https://github.com/KTrain5169)! - update README
+
 ## 0.1.0
 
 ### Minor Changes
